@@ -21,5 +21,53 @@
   "DesignYourGrillzPage": { "title": "Design Your Grillz" },
   "DesignYourClientsGrillzPage": { "title": "Design Your Client's Grillz" },
   "AboutPage": { "title": "About" },
-  "ContactPage": { "title": "Contact" }
+  "ContactPage": { "title": "Contact" },
+  "Auth": {
+    "notConfiguredTitle": "Login not available yet",
+    "notConfiguredBody": "This page needs Supabase to be configured (Supabase project URL and key) before it works.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "genericError": "Something went wrong. Please try again.",
+    "Login": {
+      "title": "Log in",
+      "submit": "Log in",
+      "submitting": "Logging in…",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create one",
+      "forgotPassword": "Forgot your password?"
+    },
+    "Register": {
+      "title": "Create account",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "haveAccount": "Already have an account?",
+      "signIn": "Log in",
+      "passwordMismatch": "Passwords don't match.",
+      "successTitle": "Check your email",
+      "successBody": "We sent you a confirmation link. Click it to activate your account."
+    },
+    "ForgotPassword": {
+      "title": "Forgot your password",
+      "submit": "Send recovery link",
+      "submitting": "Sending…",
+      "backToLogin": "Back to login",
+      "successTitle": "Check your email",
+      "successBody": "If there's an account with this email, we sent a link to reset your password."
+    },
+    "ResetPassword": {
+      "title": "Set a new password",
+      "newPasswordLabel": "New password",
+      "submit": "Update password",
+      "submitting": "Updating…",
+      "successTitle": "Password updated",
+      "successBody": "Your password has been updated.",
+      "goToLogin": "Go to login"
+    },
+    "Account": {
+      "title": "You're logged in",
+      "loggedInAs": "Logged in as",
+      "signOut": "Log out"
+    }
+  }
 }

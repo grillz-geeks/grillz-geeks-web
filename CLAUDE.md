@@ -43,7 +43,13 @@ O site é em **inglês por padrão**, com **opção de tradução para portuguê
 
 As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Custom Grillz, Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
 
-A **área do cliente** (`/app/...`) e a **área administrativa** (`/admin/...`) ainda não foram criadas — ficam para quando o login (Supabase) estiver configurado, para não existir tela "restrita" sem nenhuma trava de acesso.
+A **área do cliente** (`/app/...`) e a **área administrativa** (`/admin/...`) ainda não foram criadas — ficam para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
+
+## Login
+
+Já existem as páginas de **login, criar conta e recuperar senha** (`/login`, `/register`, `/forgot-password`, `/reset-password`), usando **Supabase Auth**. Enquanto as variáveis `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` não estiverem configuradas no `.env.local` (ou na Vercel em produção), essas páginas mostram um aviso de "login ainda não disponível" em vez de dar erro — o resto do site continua funcionando normalmente.
+
+Depois de logar, a pessoa cai numa página genérica em `/account` (só mostra o email dela e um botão de sair) — isso é temporário, só para provar que o login funciona. **Ainda não existe diferença entre perfil de cliente e perfil de time interno** — quem cria conta em `/register` não vira automaticamente nem cliente nem interno; essa parte fica para quando a Thais decidir como isso deve funcionar.
 
 ## Ainda não decidido
 
