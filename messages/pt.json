@@ -21,5 +21,53 @@
   "DesignYourGrillzPage": { "title": "Monte Seu Grillz" },
   "DesignYourClientsGrillzPage": { "title": "Monte o Grillz do Seu Cliente" },
   "AboutPage": { "title": "Sobre" },
-  "ContactPage": { "title": "Contato" }
+  "ContactPage": { "title": "Contato" },
+  "Auth": {
+    "notConfiguredTitle": "Login ainda não disponível",
+    "notConfiguredBody": "Esta página precisa que o Supabase esteja configurado (URL e chave do projeto) para funcionar.",
+    "emailLabel": "Email",
+    "passwordLabel": "Senha",
+    "confirmPasswordLabel": "Confirmar senha",
+    "genericError": "Algo deu errado. Tente novamente.",
+    "Login": {
+      "title": "Entrar",
+      "submit": "Entrar",
+      "submitting": "Entrando…",
+      "noAccount": "Não tem uma conta?",
+      "createAccount": "Criar conta",
+      "forgotPassword": "Esqueceu sua senha?"
+    },
+    "Register": {
+      "title": "Criar conta",
+      "submit": "Criar conta",
+      "submitting": "Criando conta…",
+      "haveAccount": "Já tem uma conta?",
+      "signIn": "Entrar",
+      "passwordMismatch": "As senhas não conferem.",
+      "successTitle": "Confira seu email",
+      "successBody": "Enviamos um link de confirmação. Clique nele para ativar sua conta."
+    },
+    "ForgotPassword": {
+      "title": "Esqueci minha senha",
+      "submit": "Enviar link de recuperação",
+      "submitting": "Enviando…",
+      "backToLogin": "Voltar para o login",
+      "successTitle": "Confira seu email",
+      "successBody": "Se existir uma conta com esse email, enviamos um link para redefinir a senha."
+    },
+    "ResetPassword": {
+      "title": "Defina uma nova senha",
+      "newPasswordLabel": "Nova senha",
+      "submit": "Atualizar senha",
+      "submitting": "Atualizando…",
+      "successTitle": "Senha atualizada",
+      "successBody": "Sua senha foi atualizada.",
+      "goToLogin": "Ir para o login"
+    },
+    "Account": {
+      "title": "Você está logada",
+      "loggedInAs": "Logada como",
+      "signOut": "Sair"
+    }
+  }
 }
