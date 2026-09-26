@@ -31,12 +31,25 @@ Fase 1 — site institucional (público):
 Fase 2 — plataforma logada (depois do site):
 - Login com dois perfis: **cliente** (área do cliente) e **interno** (área da equipe).
 
+## Idioma
+
+O site é em **inglês por padrão**, com **opção de tradução para português**. Isso é feito com a biblioteca `next-intl`:
+
+- Inglês (`en`) é o idioma padrão e não aparece na URL (ex: `grillzgeeks.com/services/b2b`).
+- Português (`pt`) aparece com prefixo na URL (ex: `grillzgeeks.com/pt/services/b2b`).
+- As páginas ficam dentro de `src/app/[locale]/...` e os textos traduzíveis ficam em `messages/en.json` e `messages/pt.json`.
+
+## Estrutura de páginas (fase atual)
+
+As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Custom Grillz, Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
+
+A **área do cliente** (`/app/...`) e a **área administrativa** (`/admin/...`) ainda não foram criadas — ficam para quando o login (Supabase) estiver configurado, para não existir tela "restrita" sem nenhuma trava de acesso.
+
 ## Ainda não decidido
 
-- **Idioma do site** (português, inglês, ou os dois) ainda não foi definido.
 - **Identidade visual** (logo, cores, fontes, imagens) ainda não foi adicionada ao projeto.
 
-Por isso: **não invente** paleta de cores, fontes, textos finais de página ou decisões de idioma. Quando for necessário decidir algo assim, pergunte antes.
+Por isso: **não invente** paleta de cores, fontes nem textos finais de página. Quando for necessário decidir algo assim, pergunte antes.
 
 ## Regras de trabalho
 

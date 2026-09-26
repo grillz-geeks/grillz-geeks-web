@@ -1,0 +1,25 @@
+{
+  "Common": {
+    "placeholderNote": "This page is a structural placeholder — final content and visual design are coming soon."
+  },
+  "HomePage": { "title": "Home" },
+  "ServicesB2BPage": { "title": "Services — B2B" },
+  "ServicesB2BCadPage": { "title": "Services — B2B — CAD Design" },
+  "ServicesB2BCasesPage": { "title": "Services — B2B — Case Portfolio" },
+  "ServicesB2BHowItWorksPage": { "title": "Services — B2B — How It Works" },
+  "ServicesB2BContactPage": { "title": "Services — B2B — Contact" },
+  "ServicesB2CPage": { "title": "Services — B2C" },
+  "ServicesFaqPage": { "title": "FAQ" },
+  "WorksPage": { "title": "Works" },
+  "WorkDetailPage": { "title": "Case" },
+  "CustomGrillzPage": { "title": "Custom Grillz" },
+  "AcademyPage": { "title": "Academy" },
+  "AcademyCoursesPage": { "title": "Academy — Courses" },
+  "AcademyCourseUltimateCadPage": { "title": "Ultimate CAD Grillz Course" },
+  "AcademyTestimonialsPage": { "title": "Academy — Testimonials" },
+  "AcademyEnrollPage": { "title": "Academy — Enroll" },
+  "DesignYourGrillzPage": { "title": "Design Your Grillz" },
+  "DesignYourClientsGrillzPage": { "title": "Design Your Client's Grillz" },
+  "AboutPage": { "title": "About" },
+  "ContactPage": { "title": "Contact" }
+}
