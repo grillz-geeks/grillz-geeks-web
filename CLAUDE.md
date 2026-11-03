@@ -88,9 +88,8 @@ Importante: é tradução automática, **não revisada por humano** — a qualid
 
 Rotas protegidas em `/admin/...` (`src/app/admin/`, **fora** do `[locale]`, mesma lógica de idioma e mesma trava de login da Área do cliente — ver "Idioma" e "Login" acima). Sendo construída em partes, seguindo o fluxograma que a Thais enviou; cada seção do menu vira um PR separado.
 
-- `/admin` — **Dashboard** (pronto): visão gerencial com KPIs, fila de orçamentos recebidos, atividades recentes e resumo da produção.
-- `/admin/production` — **Quadro de produção** (pronto): pedidos agrupados por etapa (Novas solicitações, Em design, Aguardando aprovação, Precisa de revisão, Entregue), sem arrastar-e-soltar ainda.
-- `/admin/production/[id]` — **Detalhe do pedido** (pronto): abas Visão geral (dados do pedido, itens, linha do tempo) e Ações relacionadas (botões de aprovar/pedir revisão/etc., ainda decorativos).
+- `/admin` — **Dashboard** (pronto): visão gerencial com KPIs, fila de orçamentos recebidos, atividades recentes, e o **quadro de produção** (kanban) embutido direto na página — pedidos agrupados por etapa (Novas solicitações, Em design, Aguardando aprovação, Precisa de revisão, Entregue), sem arrastar-e-soltar ainda. Clicar num card de pedido leva ao detalhe.
+- `/admin/production/[id]` — **Detalhe do pedido** (pronto): dados do pedido, itens e linha do tempo (com espaço para foto de referência por evento, ainda só visual). As ações (aprovar, pedir revisão, etc.) ficam num menu "⋮" ao lado do nome do cliente, não em abas.
 - `/admin/clients` — **Clientes** (em construção, só título).
 - `/admin/projects` — **Histórico de projetos** (em construção, só título).
 - `/admin/finance` — **Faturas** (em construção, só título).

@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { OrderStageBadge } from "@/components/admin/order-stage-badge";
 import { PriorityBadge } from "@/components/admin/priority-badge";
+import { ProductionBoard } from "@/components/admin/production-board";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ORDER_STAGES, mockBudgetRequests, mockOrders, mockRecentActivity } from "@/lib/mock/admin";
+import { mockBudgetRequests, mockOrders, mockRecentActivity } from "@/lib/mock/admin";
 
 export const metadata = { title: "Dashboard" };
 
@@ -113,30 +112,15 @@ export default function AdminDashboardPage() {
         </Card>
       </div>
 
-      <Card className="p-0">
-        <CardHeader className="flex flex-row items-center justify-between pt-4">
-          <CardTitle className="text-base">Production</CardTitle>
-          <Button
-            size="sm"
-            variant="outline"
-            nativeButton={false}
-            render={<Link href="/admin/production">View production board</Link>}
-          />
-        </CardHeader>
-        <CardContent className="pb-4">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-            {ORDER_STAGES.map((stage) => {
-              const count = mockOrders.filter((order) => order.stage === stage.value).length;
-              return (
-                <div key={stage.value} className="rounded-md border p-3 text-center">
-                  <p className="text-xl font-semibold">{count}</p>
-                  <p className="text-xs text-muted-foreground">{stage.label}</p>
-                </div>
-              );
-            })}
-          </div>
-        </CardContent>
-      </Card>
+      <div className="space-y-3">
+        <div>
+          <h2 className="text-lg font-semibold">Production</h2>
+          <p className="text-sm text-muted-foreground">
+            Orders currently in progress, grouped by stage.
+          </p>
+        </div>
+        <ProductionBoard orders={mockOrders} />
+      </div>
 
       <Card className="p-0">
         <CardHeader className="pt-4">
