@@ -33,11 +33,16 @@ Fase 2 — plataforma logada (depois do site):
 
 ## Idioma
 
-O site é em **inglês por padrão**, com **opção de tradução para português**. Isso é feito com a biblioteca `next-intl`:
+Existem **dois sistemas de idioma diferentes** no projeto — um para o site público, outro para a plataforma logada. Eles não se misturam.
 
-- Inglês (`en`) é o idioma padrão e não aparece na URL (ex: `grillzgeeks.com/services/b2b`).
-- Português (`pt`) aparece com prefixo na URL (ex: `grillzgeeks.com/pt/services/b2b`).
-- As páginas ficam dentro de `src/app/[locale]/...` e os textos traduzíveis ficam em `messages/en.json` e `messages/pt.json`.
+**Site público** (`src/app/[locale]/...`, tudo que não é `/app/...`): inglês por padrão, com opção de português, feitos à mão com a biblioteca `next-intl`:
+- Inglês (`en`) é o padrão e não aparece na URL (ex: `grillzgeeks.com/services/b2b`).
+- Português (`pt`) aparece com prefixo (ex: `grillzgeeks.com/pt/services/b2b`).
+- Textos traduzíveis ficam em `messages/en.json` e `messages/pt.json`.
+
+**Plataforma logada** (`src/app/app/...`, Área do cliente): sempre em **inglês, escrito direto no código** (sem next-intl, sem arquivo de tradução). Para outros idiomas, veja "Idioma da plataforma" na seção "Área do cliente" abaixo.
+
+Por isso a pasta `src/app/app/` fica **fora** de `src/app/[locale]/`, como uma rota de primeiro nível — é o mesmo motivo de `src/app/auth/confirm` também ficar fora.
 
 ## Estrutura de páginas (fase atual)
 
@@ -55,14 +60,29 @@ Depois de logar, a pessoa cai em `/app/projects` (Área do cliente). **Ainda nã
 
 ## Área do cliente
 
-Rotas protegidas em `/app/...` (`src/app/[locale]/app/`). O layout (`src/app/[locale]/app/layout.tsx`) exige login — quem não está logado é redirecionado para `/login` automaticamente.
+Rotas protegidas em `/app/...` (`src/app/app/`, **fora** do `[locale]` — ver "Idioma" acima). O layout (`src/app/app/layout.tsx`) exige login — quem não está logado é redirecionado para `/login` automaticamente.
 
 - `/app/projects` — Meus projetos (lista de orçamentos/projetos)
 - `/app/projects/new` — Criar novo projeto (fluxo de orçamento)
-- `/app/projects/[id]` — Detalhes do projeto (abas: Visão geral, Tarefas, Documentos)
-- `/app/account` — Dados da conta (perfil, senha, time/aprovadores)
+- `/app/projects/[id]` — Detalhes do projeto (abas: Visão geral — que já inclui Tarefas —, e Documentos)
+- `/app/payments` — Pagamentos (saldo devedor, histórico, pagar pendências)
+- `/app/account` — Dados da conta (perfil, senha, idioma, time/aprovadores)
 
-**Os dados exibidos são fictícios** (`src/lib/mock/projects.ts`) — nada ainda está ligado a uma tabela de verdade no Supabase. Os formulários (criar projeto, alterar dados, alterar senha, adicionar time) ainda não salvam nada de verdade, são só a tela. Isso é esperado nesta fase — ligar ao banco de dados é um próximo passo, depois que o visual for aprovado.
+**Os dados exibidos são fictícios** (`src/lib/mock/projects.ts`, `src/lib/mock/payments.ts`) — nada ainda está ligado a uma tabela de verdade no Supabase. Os formulários (criar projeto, alterar dados, alterar senha, adicionar time) ainda não salvam nada de verdade, são só a tela. Isso é esperado nesta fase — ligar ao banco de dados é um próximo passo, depois que o visual for aprovado.
+
+### Pagamentos
+
+A tela de Pagamentos (`/app/payments`) simula o fluxo com o **Stripe** (que ainda não está integrado de verdade). Mostra saldo devedor, total pago, e por projeto: status (pago / a vencer / atrasado) e um botão "Pay" que simula o pagamento só localmente (sem cobrar nada, sem rede) — ver `src/components/client-area/payments-table.tsx`.
+
+### Idioma da plataforma
+
+A plataforma é **sempre escrita em inglês**. Para outros idiomas, a pessoa troca em **Dados da conta → Language**, usando o **widget do Google Tradutor** (gratuito, de terceiros) — não é next-intl, e cobre qualquer idioma que o Google Tradutor tiver, não só os que a gente decidiu traduzir à mão.
+
+- `src/lib/google-translate.ts` — lista de idiomas e funções para ler/trocar o idioma atual (via cookie `googtrans`, que é como o widget do Google funciona).
+- `src/components/client-area/google-translate-loader.tsx` — carrega o script do Google uma vez (escondido, sem a barrinha padrão deles).
+- `src/components/client-area/language-picker.tsx` — o seletor em Dados da conta.
+
+Importante: é tradução automática, **não revisada por humano** — a qualidade varia por idioma. E depende do Google continuar oferecendo esse widget gratuito do jeito que é hoje (é um serviço não-oficial/não documentado oficialmente pelo Google, mas amplamente usado).
 
 ## Identidade visual e design system
 

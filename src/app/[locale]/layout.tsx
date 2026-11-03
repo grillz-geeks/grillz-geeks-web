@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Manrope } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { HtmlLangSync } from "@/components/html-lang-sync";
 import { routing } from "@/i18n/routing";
-import "../globals.css";
-
-const manrope = Manrope({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Grillz Geeks",
@@ -35,13 +24,9 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html
-      lang={locale}
-      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider>
+      <HtmlLangSync />
+      {children}
+    </NextIntlClientProvider>
   );
 }

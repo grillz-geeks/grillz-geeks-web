@@ -1,7 +1,7 @@
-import { getLocale, getTranslations } from "next-intl/server";
-import { NotConfiguredNotice } from "@/components/auth/not-configured-notice";
+import { redirect } from "next/navigation";
+import { GoogleTranslateLoader } from "@/components/client-area/google-translate-loader";
+import { PlatformNotConfiguredNotice } from "@/components/client-area/not-configured-notice";
 import { ClientAreaShell } from "@/components/client-area/shell";
-import { redirect } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 
@@ -9,6 +9,12 @@ import { isSupabaseConfigured } from "@/lib/supabase/env";
  * Layout da Área do cliente. Garante que só quem está logado acessa
  * qualquer página dentro de /app/... — ainda sem diferenciar perfil
  * de cliente e de time interno (decisão pendente).
+ *
+ * A plataforma inteira (tudo dentro de /app/...) fica fora do
+ * sistema de idioma do site público (next-intl): o texto é sempre
+ * escrito em inglês, e o idioma de leitura é trocado pela pessoa
+ * via o Google Tradutor, em Dados da conta (ver
+ * src/components/client-area/language-picker.tsx).
  */
 export default async function ClientAreaLayout({
   children,
@@ -16,11 +22,9 @@ export default async function ClientAreaLayout({
   children: React.ReactNode;
 }) {
   if (!isSupabaseConfigured()) {
-    const t = await getTranslations("Auth");
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-8">
-        <NotConfiguredNotice />
-        <p className="mt-4 text-sm text-muted-foreground">{t("notConfiguredBody")}</p>
+        <PlatformNotConfiguredNotice />
       </main>
     );
   }
@@ -31,9 +35,13 @@ export default async function ClientAreaLayout({
   } = await supabase.auth.getUser();
 
   if (!user) {
-    const locale = await getLocale();
-    return redirect({ href: "/login", locale });
+    redirect("/login");
   }
 
-  return <ClientAreaShell email={user.email ?? ""}>{children}</ClientAreaShell>;
+  return (
+    <>
+      <GoogleTranslateLoader />
+      <ClientAreaShell email={user.email ?? ""}>{children}</ClientAreaShell>
+    </>
+  );
 }

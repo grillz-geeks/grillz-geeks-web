@@ -1,17 +1,34 @@
 "use client";
 
-import { FolderKanban, Settings } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { CreditCard, Folder, Gear } from "@phosphor-icons/react";
 import Image from "next/image";
-import { SignOutButton } from "@/components/auth/sign-out-button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { SignOutButton } from "@/components/client-area/sign-out-button";
 import { Separator } from "@/components/ui/separator";
-import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-function initialsFromEmail(email: string) {
-  return email.slice(0, 2).toUpperCase();
+/**
+ * Ainda não temos um campo de "nome" de verdade salvo (ver /app/account).
+ * Por enquanto, mostramos um nome derivado do email só para a tela não
+ * ficar vazia — trocar quando o perfil estiver ligado ao banco de dados.
+ */
+function displayNameFromEmail(email: string) {
+  const [localPart] = email.split("@");
+  if (!localPart) return email;
+  return localPart
+    .replace(/[._-]+/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(" ");
 }
+
+const NAV_ITEMS = [
+  { href: "/app/projects", label: "My projects", icon: Folder },
+  { href: "/app/payments", label: "Payments", icon: CreditCard },
+  { href: "/app/account", label: "Account", icon: Gear },
+];
 
 export function ClientAreaShell({
   email,
@@ -20,29 +37,25 @@ export function ClientAreaShell({
   email: string;
   children: React.ReactNode;
 }) {
-  const t = useTranslations("ClientArea");
   const pathname = usePathname();
-
-  const navItems = [
-    { href: "/app/projects", label: t("nav.projects"), icon: FolderKanban },
-    { href: "/app/account", label: t("nav.account"), icon: Settings },
-  ];
 
   return (
     <div className="flex min-h-screen">
       <aside className="flex w-64 shrink-0 flex-col border-r bg-sidebar p-4">
-        <div className="flex items-center gap-2 px-2 py-3">
-          <Image src="/brand/logo-mark.svg" alt="Grillz Geeks" width={40} height={32} />
-          <div>
-            <p className="text-sm font-semibold leading-tight">Grillz Geeks</p>
-            <p className="text-xs text-muted-foreground leading-tight">{t("title")}</p>
+        <div className="flex flex-col items-start gap-2 px-2 py-3">
+          <Image src="/brand/logo-mark.svg" alt="Grillz Geeks" width={64} height={52} />
+          <div className="min-w-0">
+            <p className="truncate text-sm font-semibold leading-tight">
+              {displayNameFromEmail(email)}
+            </p>
+            <p className="truncate text-xs text-muted-foreground leading-tight">{email}</p>
           </div>
         </div>
 
         <Separator className="my-3" />
 
         <nav className="flex flex-1 flex-col gap-1">
-          {navItems.map((item) => {
+          {NAV_ITEMS.map((item) => {
             const active = pathname.startsWith(item.href);
             const Icon = item.icon;
             return (
@@ -63,15 +76,7 @@ export function ClientAreaShell({
           })}
         </nav>
 
-        <Separator className="my-3" />
-
-        <div className="flex items-center gap-2 px-2 py-1">
-          <Avatar className="size-8">
-            <AvatarFallback>{initialsFromEmail(email)}</AvatarFallback>
-          </Avatar>
-          <p className="min-w-0 flex-1 truncate text-xs text-muted-foreground">{email}</p>
-        </div>
-        <div className="px-2 pt-2">
+        <div className="px-2">
           <SignOutButton variant="ghost" className="w-full justify-start" />
         </div>
       </aside>

@@ -1,12 +1,10 @@
-import { ChevronLeft, Download } from "lucide-react";
-import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { BackToProjectsLink } from "@/components/client-area/back-to-projects-link";
+import { DocumentRow } from "@/components/client-area/document-row";
 import { ProjectStatusBadge } from "@/components/client-area/project-status-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "@/i18n/navigation";
 import { getMockProject, mockProjects } from "@/lib/mock/projects";
 
 export function generateStaticParams() {
@@ -20,7 +18,7 @@ export async function generateMetadata({
 }) {
   const { id } = await params;
   const project = getMockProject(id);
-  return { title: project?.name ?? "Projeto" };
+  return { title: project?.name ?? "Project" };
 }
 
 export default async function ProjectDetailPage({
@@ -30,7 +28,6 @@ export default async function ProjectDetailPage({
 }) {
   const { id } = await params;
   const project = getMockProject(id);
-  const t = await getTranslations("ClientArea.ProjectDetail");
 
   if (!project) {
     notFound();
@@ -39,18 +36,7 @@ export default async function ProjectDetailPage({
   return (
     <div className="space-y-6 p-8">
       <div>
-        <Button
-          nativeButton={false}
-          variant="ghost"
-          size="sm"
-          className="-ml-2 gap-1"
-          render={
-            <Link href="/app/projects">
-              <ChevronLeft className="size-4" />
-              {t("backToList")}
-            </Link>
-          }
-        />
+        <BackToProjectsLink label="Back to my projects" />
         <div className="mt-2 flex flex-wrap items-center gap-3">
           <h1 className="text-2xl font-semibold">{project.name}</h1>
           <ProjectStatusBadge status={project.status} />
@@ -59,15 +45,14 @@ export default async function ProjectDetailPage({
 
       <Tabs defaultValue="overview">
         <TabsList>
-          <TabsTrigger value="overview">{t("tabOverview")}</TabsTrigger>
-          <TabsTrigger value="tasks">{t("tabTasks")}</TabsTrigger>
-          <TabsTrigger value="documents">{t("tabDocuments")}</TabsTrigger>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="documents">Documents</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">{t("briefing")}</CardTitle>
+              <CardTitle className="text-base">Briefing</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">{project.briefing}</p>
@@ -76,7 +61,7 @@ export default async function ProjectDetailPage({
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">{t("timeline")}</CardTitle>
+              <CardTitle className="text-base">Timeline</CardTitle>
             </CardHeader>
             <CardContent>
               <ol className="space-y-4">
@@ -97,13 +82,16 @@ export default async function ProjectDetailPage({
               </ol>
             </CardContent>
           </Card>
-        </TabsContent>
 
-        <TabsContent value="tasks">
           <Card>
-            <CardContent className="pt-6">
+            <CardHeader>
+              <CardTitle className="text-base">Tasks</CardTitle>
+            </CardHeader>
+            <CardContent>
               {project.tasks.length === 0 ? (
-                <p className="text-sm text-muted-foreground">{t("tasksEmpty")}</p>
+                <p className="text-sm text-muted-foreground">
+                  No pending tasks for this project right now.
+                </p>
               ) : (
                 <ul className="space-y-3">
                   {project.tasks.map((task) => (
@@ -113,9 +101,9 @@ export default async function ProjectDetailPage({
                     >
                       <span className="text-sm">{task.label}</span>
                       <div className="flex gap-2">
-                        <Button size="sm">{t("approve")}</Button>
+                        <Button size="sm">Approve</Button>
                         <Button size="sm" variant="outline">
-                          {t("requestChanges")}
+                          Request changes
                         </Button>
                       </div>
                     </li>
@@ -130,20 +118,13 @@ export default async function ProjectDetailPage({
           <Card>
             <CardContent className="pt-6">
               {project.documents.length === 0 ? (
-                <p className="text-sm text-muted-foreground">{t("documentsEmpty")}</p>
+                <p className="text-sm text-muted-foreground">
+                  No documents released for download yet.
+                </p>
               ) : (
                 <ul className="divide-y">
-                  {project.documents.map((doc, index) => (
-                    <li key={doc.id}>
-                      {index > 0 && <Separator />}
-                      <div className="flex items-center justify-between py-3">
-                        <span className="text-sm">{doc.name}</span>
-                        <Button size="sm" variant="ghost" className="gap-1.5">
-                          <Download className="size-4" />
-                          {t("download")}
-                        </Button>
-                      </div>
-                    </li>
+                  {project.documents.map((doc) => (
+                    <DocumentRow key={doc.id} name={doc.name} downloadLabel="Download" />
                   ))}
                 </ul>
               )}

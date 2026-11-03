@@ -1,19 +1,18 @@
-import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import type { ProjectStatus } from "@/lib/mock/projects";
 
-const variantByStatus: Record<
+const STATUS_CONFIG: Record<
   ProjectStatus,
-  "default" | "secondary" | "outline"
+  { label: string; variant: "default" | "secondary" | "outline" }
 > = {
-  pending: "outline",
-  awaitingApproval: "secondary",
-  inProduction: "secondary",
-  delivered: "default",
-  archived: "outline",
+  pending: { label: "Pending", variant: "outline" },
+  awaitingApproval: { label: "Awaiting approval", variant: "secondary" },
+  inProduction: { label: "In production", variant: "secondary" },
+  delivered: { label: "Delivered", variant: "default" },
+  archived: { label: "Archived", variant: "outline" },
 };
 
 export function ProjectStatusBadge({ status }: { status: ProjectStatus }) {
-  const t = useTranslations("ClientArea.Status");
-  return <Badge variant={variantByStatus[status]}>{t(status)}</Badge>;
+  const { label, variant } = STATUS_CONFIG[status];
+  return <Badge variant={variant}>{label}</Badge>;
 }

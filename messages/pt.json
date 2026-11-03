@@ -2,26 +2,66 @@
   "Common": {
     "placeholderNote": "Esta página é um espaço reservado da estrutura — o conteúdo final e a identidade visual ainda vão ser adicionados."
   },
-  "HomePage": { "title": "Início" },
-  "ServicesB2BPage": { "title": "Serviços — Empresas e Marcas (B2B)" },
-  "ServicesB2BCadPage": { "title": "Serviços — B2B — Design CAD" },
-  "ServicesB2BCasesPage": { "title": "Serviços — B2B — Portfólio de Cases" },
-  "ServicesB2BHowItWorksPage": { "title": "Serviços — B2B — Como Funciona" },
-  "ServicesB2BContactPage": { "title": "Serviços — B2B — Fale com a Gente" },
-  "ServicesB2CPage": { "title": "Serviços — Pessoas Físicas (B2C)" },
-  "ServicesFaqPage": { "title": "Perguntas Frequentes" },
-  "WorksPage": { "title": "Portfólio" },
-  "WorkDetailPage": { "title": "Case" },
-  "CustomGrillzPage": { "title": "Custom Grillz" },
-  "AcademyPage": { "title": "Academy" },
-  "AcademyCoursesPage": { "title": "Academy — Cursos" },
-  "AcademyCourseUltimateCadPage": { "title": "Curso Ultimate CAD Grillz" },
-  "AcademyTestimonialsPage": { "title": "Academy — Depoimentos" },
-  "AcademyEnrollPage": { "title": "Academy — Matrícula" },
-  "DesignYourGrillzPage": { "title": "Monte Seu Grillz" },
-  "DesignYourClientsGrillzPage": { "title": "Monte o Grillz do Seu Cliente" },
-  "AboutPage": { "title": "Sobre" },
-  "ContactPage": { "title": "Contato" },
+  "HomePage": {
+    "title": "Início"
+  },
+  "ServicesB2BPage": {
+    "title": "Serviços — Empresas e Marcas (B2B)"
+  },
+  "ServicesB2BCadPage": {
+    "title": "Serviços — B2B — Design CAD"
+  },
+  "ServicesB2BCasesPage": {
+    "title": "Serviços — B2B — Portfólio de Cases"
+  },
+  "ServicesB2BHowItWorksPage": {
+    "title": "Serviços — B2B — Como Funciona"
+  },
+  "ServicesB2BContactPage": {
+    "title": "Serviços — B2B — Fale com a Gente"
+  },
+  "ServicesB2CPage": {
+    "title": "Serviços — Pessoas Físicas (B2C)"
+  },
+  "ServicesFaqPage": {
+    "title": "Perguntas Frequentes"
+  },
+  "WorksPage": {
+    "title": "Portfólio"
+  },
+  "WorkDetailPage": {
+    "title": "Case"
+  },
+  "CustomGrillzPage": {
+    "title": "Custom Grillz"
+  },
+  "AcademyPage": {
+    "title": "Academy"
+  },
+  "AcademyCoursesPage": {
+    "title": "Academy — Cursos"
+  },
+  "AcademyCourseUltimateCadPage": {
+    "title": "Curso Ultimate CAD Grillz"
+  },
+  "AcademyTestimonialsPage": {
+    "title": "Academy — Depoimentos"
+  },
+  "AcademyEnrollPage": {
+    "title": "Academy — Matrícula"
+  },
+  "DesignYourGrillzPage": {
+    "title": "Monte Seu Grillz"
+  },
+  "DesignYourClientsGrillzPage": {
+    "title": "Monte o Grillz do Seu Cliente"
+  },
+  "AboutPage": {
+    "title": "Sobre"
+  },
+  "ContactPage": {
+    "title": "Contato"
+  },
   "Auth": {
     "notConfiguredTitle": "Login ainda não disponível",
     "notConfiguredBody": "Esta página precisa que o Supabase esteja configurado (URL e chave do projeto) para funcionar.",
@@ -63,79 +103,6 @@
       "successTitle": "Senha atualizada",
       "successBody": "Sua senha foi atualizada.",
       "goToLogin": "Ir para o login"
-    },
-    "Account": {
-      "title": "Você está logada",
-      "loggedInAs": "Logada como",
-      "signOut": "Sair"
-    }
-  },
-  "ClientArea": {
-    "title": "Área do cliente",
-    "nav": {
-      "projects": "Meus projetos",
-      "account": "Dados da conta"
-    },
-    "Status": {
-      "pending": "Pendente",
-      "awaitingApproval": "Aguardando aprovação",
-      "inProduction": "Em produção",
-      "delivered": "Entregue",
-      "archived": "Arquivado"
-    },
-    "Projects": {
-      "title": "Meus projetos",
-      "subtitle": "Acompanhe seus orçamentos e projetos em andamento.",
-      "newProject": "Criar novo projeto",
-      "tableProject": "Projeto",
-      "tableStatus": "Status",
-      "tableUpdated": "Última atualização",
-      "viewDetails": "Ver detalhes"
-    },
-    "ProjectNew": {
-      "title": "Criar novo projeto",
-      "subtitle": "Conte pra gente sobre o projeto para prepararmos um orçamento.",
-      "projectTypeLabel": "Tipo de projeto",
-      "projectTypePlaceholder": "Selecione um tipo",
-      "projectTypeB2B": "Marca / empresa (B2B)",
-      "projectTypeB2C": "Grillz pessoal (B2C)",
-      "briefingLabel": "Briefing",
-      "briefingPlaceholder": "Descreva o que você tem em mente: estilo, material, prazo, referências…",
-      "referencesLabel": "Referências",
-      "referencesHint": "Envie imagens ou arquivos de referência (em breve).",
-      "submit": "Enviar solicitação",
-      "cancel": "Cancelar"
-    },
-    "ProjectDetail": {
-      "backToList": "Voltar para meus projetos",
-      "tabOverview": "Visão geral",
-      "tabTasks": "Tarefas",
-      "tabDocuments": "Documentos",
-      "briefing": "Briefing",
-      "currentStatus": "Status atual",
-      "timeline": "Linha do tempo",
-      "tasksEmpty": "Nenhuma tarefa pendente para este projeto no momento.",
-      "approve": "Aprovar",
-      "requestChanges": "Solicitar revisão",
-      "documentsEmpty": "Nenhum documento liberado para download ainda.",
-      "download": "Baixar"
-    },
-    "Account": {
-      "title": "Dados da conta",
-      "profileTitle": "Perfil",
-      "nameLabel": "Nome",
-      "emailLabel": "Email",
-      "saveChanges": "Salvar alterações",
-      "passwordTitle": "Senha",
-      "passwordHint": "Altere a senha usada para entrar na sua conta.",
-      "currentPasswordLabel": "Senha atual",
-      "newPasswordLabel": "Nova senha",
-      "updatePassword": "Atualizar senha",
-      "teamTitle": "Time",
-      "teamHint": "Pessoas que também podem aprovar orçamentos e designs nesta conta.",
-      "teamEmpty": "Nenhuma pessoa adicionada ainda.",
-      "addTeammate": "Adicionar pessoa",
-      "teammateEmailPlaceholder": "pessoa@email.com"
     }
   }
 }

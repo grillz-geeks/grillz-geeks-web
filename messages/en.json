@@ -2,26 +2,66 @@
   "Common": {
     "placeholderNote": "This page is a structural placeholder — final content and visual design are coming soon."
   },
-  "HomePage": { "title": "Home" },
-  "ServicesB2BPage": { "title": "Services — B2B" },
-  "ServicesB2BCadPage": { "title": "Services — B2B — CAD Design" },
-  "ServicesB2BCasesPage": { "title": "Services — B2B — Case Portfolio" },
-  "ServicesB2BHowItWorksPage": { "title": "Services — B2B — How It Works" },
-  "ServicesB2BContactPage": { "title": "Services — B2B — Contact" },
-  "ServicesB2CPage": { "title": "Services — B2C" },
-  "ServicesFaqPage": { "title": "FAQ" },
-  "WorksPage": { "title": "Works" },
-  "WorkDetailPage": { "title": "Case" },
-  "CustomGrillzPage": { "title": "Custom Grillz" },
-  "AcademyPage": { "title": "Academy" },
-  "AcademyCoursesPage": { "title": "Academy — Courses" },
-  "AcademyCourseUltimateCadPage": { "title": "Ultimate CAD Grillz Course" },
-  "AcademyTestimonialsPage": { "title": "Academy — Testimonials" },
-  "AcademyEnrollPage": { "title": "Academy — Enroll" },
-  "DesignYourGrillzPage": { "title": "Design Your Grillz" },
-  "DesignYourClientsGrillzPage": { "title": "Design Your Client's Grillz" },
-  "AboutPage": { "title": "About" },
-  "ContactPage": { "title": "Contact" },
+  "HomePage": {
+    "title": "Home"
+  },
+  "ServicesB2BPage": {
+    "title": "Services — B2B"
+  },
+  "ServicesB2BCadPage": {
+    "title": "Services — B2B — CAD Design"
+  },
+  "ServicesB2BCasesPage": {
+    "title": "Services — B2B — Case Portfolio"
+  },
+  "ServicesB2BHowItWorksPage": {
+    "title": "Services — B2B — How It Works"
+  },
+  "ServicesB2BContactPage": {
+    "title": "Services — B2B — Contact"
+  },
+  "ServicesB2CPage": {
+    "title": "Services — B2C"
+  },
+  "ServicesFaqPage": {
+    "title": "FAQ"
+  },
+  "WorksPage": {
+    "title": "Works"
+  },
+  "WorkDetailPage": {
+    "title": "Case"
+  },
+  "CustomGrillzPage": {
+    "title": "Custom Grillz"
+  },
+  "AcademyPage": {
+    "title": "Academy"
+  },
+  "AcademyCoursesPage": {
+    "title": "Academy — Courses"
+  },
+  "AcademyCourseUltimateCadPage": {
+    "title": "Ultimate CAD Grillz Course"
+  },
+  "AcademyTestimonialsPage": {
+    "title": "Academy — Testimonials"
+  },
+  "AcademyEnrollPage": {
+    "title": "Academy — Enroll"
+  },
+  "DesignYourGrillzPage": {
+    "title": "Design Your Grillz"
+  },
+  "DesignYourClientsGrillzPage": {
+    "title": "Design Your Client's Grillz"
+  },
+  "AboutPage": {
+    "title": "About"
+  },
+  "ContactPage": {
+    "title": "Contact"
+  },
   "Auth": {
     "notConfiguredTitle": "Login not available yet",
     "notConfiguredBody": "This page needs Supabase to be configured (Supabase project URL and key) before it works.",
@@ -63,79 +103,6 @@
       "successTitle": "Password updated",
       "successBody": "Your password has been updated.",
       "goToLogin": "Go to login"
-    },
-    "Account": {
-      "title": "You're logged in",
-      "loggedInAs": "Logged in as",
-      "signOut": "Log out"
-    }
-  },
-  "ClientArea": {
-    "title": "Client Area",
-    "nav": {
-      "projects": "My projects",
-      "account": "Account"
-    },
-    "Status": {
-      "pending": "Pending",
-      "awaitingApproval": "Awaiting approval",
-      "inProduction": "In production",
-      "delivered": "Delivered",
-      "archived": "Archived"
-    },
-    "Projects": {
-      "title": "My projects",
-      "subtitle": "Track your budget requests and projects in progress.",
-      "newProject": "New project",
-      "tableProject": "Project",
-      "tableStatus": "Status",
-      "tableUpdated": "Last update",
-      "viewDetails": "View details"
-    },
-    "ProjectNew": {
-      "title": "New project",
-      "subtitle": "Tell us about the project so we can prepare a budget.",
-      "projectTypeLabel": "Project type",
-      "projectTypePlaceholder": "Select a type",
-      "projectTypeB2B": "Brand / company (B2B)",
-      "projectTypeB2C": "Personal grillz (B2C)",
-      "briefingLabel": "Briefing",
-      "briefingPlaceholder": "Describe what you have in mind: style, material, deadline, references…",
-      "referencesLabel": "References",
-      "referencesHint": "Upload reference images or files (coming soon).",
-      "submit": "Submit request",
-      "cancel": "Cancel"
-    },
-    "ProjectDetail": {
-      "backToList": "Back to my projects",
-      "tabOverview": "Overview",
-      "tabTasks": "Tasks",
-      "tabDocuments": "Documents",
-      "briefing": "Briefing",
-      "currentStatus": "Current status",
-      "timeline": "Timeline",
-      "tasksEmpty": "No pending tasks for this project right now.",
-      "approve": "Approve",
-      "requestChanges": "Request changes",
-      "documentsEmpty": "No documents released for download yet.",
-      "download": "Download"
-    },
-    "Account": {
-      "title": "Account details",
-      "profileTitle": "Profile",
-      "nameLabel": "Name",
-      "emailLabel": "Email",
-      "saveChanges": "Save changes",
-      "passwordTitle": "Password",
-      "passwordHint": "Change the password you use to log in.",
-      "currentPasswordLabel": "Current password",
-      "newPasswordLabel": "New password",
-      "updatePassword": "Update password",
-      "teamTitle": "Team",
-      "teamHint": "People who can also approve budgets and designs for this account.",
-      "teamEmpty": "No teammates added yet.",
-      "addTeammate": "Add teammate",
-      "teammateEmailPlaceholder": "teammate@email.com"
     }
   }
 }

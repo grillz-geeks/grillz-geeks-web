@@ -1,10 +1,9 @@
 "use client";
 
-import { LogOut } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { SignOut } from "@phosphor-icons/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +14,6 @@ export function SignOutButton({
   className?: string;
   variant?: "outline" | "ghost";
 }) {
-  const t = useTranslations("Auth");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -35,8 +33,8 @@ export function SignOutButton({
       disabled={loading}
       className={cn("gap-2", className)}
     >
-      <LogOut className="size-4" />
-      {t("Account.signOut")}
+      <SignOut className="size-4" />
+      Log out
     </Button>
   );
 }

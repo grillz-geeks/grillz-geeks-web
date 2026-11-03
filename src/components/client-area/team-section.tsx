@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { Trash } from "@phosphor-icons/react";
 import { useState, type FormEvent } from "react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,6 @@ import { Input } from "@/components/ui/input";
  * visualizar como a tela fica, até existir a tabela de verdade.
  */
 export function TeamSection() {
-  const t = useTranslations("ClientArea.Account");
   const [teammates, setTeammates] = useState<string[]>([]);
   const [email, setEmail] = useState("");
 
@@ -22,10 +21,14 @@ export function TeamSection() {
     setEmail("");
   }
 
+  function handleRemove(teammate: string) {
+    setTeammates((prev) => prev.filter((item) => item !== teammate));
+  }
+
   return (
     <div className="space-y-4">
       {teammates.length === 0 ? (
-        <p className="text-sm text-muted-foreground">{t("teamEmpty")}</p>
+        <p className="text-sm text-muted-foreground">No teammates added yet.</p>
       ) : (
         <ul className="space-y-2">
           {teammates.map((teammate) => (
@@ -38,7 +41,15 @@ export function TeamSection() {
                   {teammate.slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              {teammate}
+              <span className="flex-1 truncate">{teammate}</span>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                onClick={() => handleRemove(teammate)}
+              >
+                <Trash className="size-4" />
+              </Button>
             </li>
           ))}
         </ul>
@@ -47,12 +58,12 @@ export function TeamSection() {
       <form onSubmit={handleAdd} className="flex gap-2">
         <Input
           type="email"
-          placeholder={t("teammateEmailPlaceholder")}
+          placeholder="teammate@email.com"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
         <Button type="submit" variant="outline">
-          {t("addTeammate")}
+          Add
         </Button>
       </form>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -12,14 +12,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Link } from "@/i18n/navigation";
 
 /**
  * Formulário ainda não ligado ao banco de dados — por enquanto só
  * mostra uma confirmação local ao enviar, sem salvar nada de verdade.
  */
 export function NewProjectForm() {
-  const t = useTranslations("ClientArea.ProjectNew");
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -30,14 +28,14 @@ export function NewProjectForm() {
   if (submitted) {
     return (
       <div className="max-w-xl rounded-lg border bg-card p-6 text-sm">
-        <p className="font-medium">{t("submit")} ✓</p>
+        <p className="font-medium">Request submitted ✓</p>
         <p className="mt-1 text-muted-foreground">
-          {t("subtitle")}
+          We will prepare a budget and get back to you soon.
         </p>
         <Button
           nativeButton={false}
           className="mt-4"
-          render={<Link href="/app/projects">{t("cancel")}</Link>}
+          render={<Link href="/app/projects">Back to my projects</Link>}
         />
       </div>
     );
@@ -46,42 +44,42 @@ export function NewProjectForm() {
   return (
     <form onSubmit={handleSubmit} className="max-w-xl space-y-6">
       <div className="space-y-1.5">
-        <Label htmlFor="project-type">{t("projectTypeLabel")}</Label>
+        <Label htmlFor="project-type">Project type</Label>
         <Select name="projectType">
           <SelectTrigger id="project-type" className="w-full">
-            <SelectValue placeholder={t("projectTypePlaceholder")} />
+            <SelectValue placeholder="Select a type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="b2b">{t("projectTypeB2B")}</SelectItem>
-            <SelectItem value="b2c">{t("projectTypeB2C")}</SelectItem>
+            <SelectItem value="b2b">Brand / company (B2B)</SelectItem>
+            <SelectItem value="b2c">Personal grillz (B2C)</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div className="space-y-1.5">
-        <Label htmlFor="briefing">{t("briefingLabel")}</Label>
+        <Label htmlFor="briefing">Briefing</Label>
         <Textarea
           id="briefing"
           name="briefing"
           rows={6}
-          placeholder={t("briefingPlaceholder")}
+          placeholder="Describe what you have in mind: style, material, deadline, references…"
         />
       </div>
 
       <div className="space-y-1.5">
-        <Label>{t("referencesLabel")}</Label>
+        <Label>References</Label>
         <div className="rounded-lg border border-dashed p-6 text-center text-sm text-muted-foreground">
-          {t("referencesHint")}
+          Upload reference images or files (coming soon).
         </div>
       </div>
 
       <div className="flex gap-3">
-        <Button type="submit">{t("submit")}</Button>
+        <Button type="submit">Submit request</Button>
         <Button
           nativeButton={false}
           type="button"
           variant="outline"
-          render={<Link href="/app/projects">{t("cancel")}</Link>}
+          render={<Link href="/app/projects">Cancel</Link>}
         />
       </div>
     </form>
