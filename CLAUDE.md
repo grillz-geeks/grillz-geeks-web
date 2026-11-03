@@ -88,8 +88,9 @@ Importante: é tradução automática, **não revisada por humano** — a qualid
 
 Rotas protegidas em `/admin/...` (`src/app/admin/`, **fora** do `[locale]`, mesma lógica de idioma e mesma trava de login da Área do cliente — ver "Idioma" e "Login" acima). Sendo construída em partes, seguindo o fluxograma que a Thais enviou; cada seção do menu vira um PR separado.
 
-- `/admin` — **Dashboard** (pronto): visão gerencial com KPIs, fila de orçamentos recebidos, atividades recentes, e o **quadro de produção** (kanban) embutido direto na página — pedidos agrupados por etapa (Novas solicitações, Em design, Aguardando aprovação, Precisa de revisão, Entregue), sem arrastar-e-soltar ainda. Clicar num card de pedido leva ao detalhe.
-- `/admin/production/[id]` — **Detalhe do pedido** (pronto): dados do pedido, itens e linha do tempo (com espaço para foto de referência por evento, ainda só visual). As ações (aprovar, pedir revisão, etc.) ficam num menu "⋮" ao lado do nome do cliente, não em abas.
+- `/admin` — **Dashboard** (pronto): visão gerencial com KPIs, fila de orçamentos recebidos, atividades recentes, e o **quadro de produção** (kanban) embutido direto na página — pedidos agrupados por etapa (Novas solicitações, Em design, Aguardando aprovação, Precisa de revisão). Clicar num card de pedido leva ao detalhe.
+- `/admin/production/[id]` — **Detalhe do pedido** (pronto): dados do pedido, itens e linha do tempo (com espaço para foto de referência por evento, ainda só visual). As ações (aprovar, pedir revisão, etc.) ficam num botão "Actions" com menu, ao lado do nome do cliente.
+- `/admin/production/delivered` — **Delivered projects** (pronto): pedidos com etapa "Entregue" não aparecem no quadro de produção — ficam nesta tela separada, em tabela (cliente, projeto, número do pedido, quantidade de itens, link para o detalhe).
 - `/admin/clients` — **Clientes** (em construção, só título).
 - `/admin/projects` — **Histórico de projetos** (em construção, só título).
 - `/admin/finance` — **Faturas** (em construção, só título).

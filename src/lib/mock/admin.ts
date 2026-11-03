@@ -32,6 +32,7 @@ export type MockOrder = {
   id: string;
   orderNumber: string;
   client: string;
+  project: string;
   stage: OrderStage;
   priority: "urgent" | "normal";
   paymentStatus: OrderPaymentStatus;
@@ -48,6 +49,7 @@ export const mockOrders: MockOrder[] = [
     id: "1234",
     orderNumber: "#1234",
     client: "Loja Exemplo",
+    project: "Coleção cápsula",
     stage: "inDesign",
     priority: "urgent",
     paymentStatus: "paid",
@@ -69,6 +71,7 @@ export const mockOrders: MockOrder[] = [
     id: "1235",
     orderNumber: "#1235",
     client: "Ana Infinito",
+    project: "Grillz infinito — topo e fundo",
     stage: "awaitingApproval",
     priority: "normal",
     paymentStatus: "pending",
@@ -86,6 +89,7 @@ export const mockOrders: MockOrder[] = [
     id: "1236",
     orderNumber: "#1236",
     client: "Marina Primeiro Contato",
+    project: "Primeiro contato — a definir estilo",
     stage: "newRequest",
     priority: "normal",
     paymentStatus: "pending",
@@ -99,7 +103,8 @@ export const mockOrders: MockOrder[] = [
   {
     id: "1198",
     orderNumber: "#1198",
-    client: "Grillz Aniversário — Pedro",
+    client: "Pedro",
+    project: "Grillz de aniversário",
     stage: "delivered",
     priority: "normal",
     paymentStatus: "paid",
@@ -114,9 +119,50 @@ export const mockOrders: MockOrder[] = [
     ],
   },
   {
+    id: "1189",
+    orderNumber: "#1189",
+    client: "Studio B2B Example",
+    project: "Campanha de lançamento — verão",
+    stage: "delivered",
+    priority: "normal",
+    paymentStatus: "paid",
+    paymentAmount: 5400,
+    receivedAt: "2026-07-10",
+    dueDate: "2026-08-22",
+    items: [
+      { id: "1", label: "Topo — ouro 18k" },
+      { id: "2", label: "Fundo — ouro 18k" },
+      { id: "3", label: "Peça avulsa — prata" },
+    ],
+    timeline: [
+      { date: "2026-07-10", label: "Orçamento aprovado" },
+      { date: "2026-08-05", label: "Produção concluída" },
+      { date: "2026-08-22", label: "Entregue" },
+    ],
+  },
+  {
+    id: "1156",
+    orderNumber: "#1156",
+    client: "Rafael Souza",
+    project: "Grillz solo — prata",
+    stage: "delivered",
+    priority: "normal",
+    paymentStatus: "paid",
+    paymentAmount: 650,
+    receivedAt: "2026-06-02",
+    dueDate: "2026-06-28",
+    items: [{ id: "1", label: "Topo — prata, acabamento fosco" }],
+    timeline: [
+      { date: "2026-06-02", label: "Orçamento aprovado" },
+      { date: "2026-06-20", label: "Produção concluída" },
+      { date: "2026-06-28", label: "Entregue" },
+    ],
+  },
+  {
     id: "1220",
     orderNumber: "#1220",
     client: "Loja Exemplo",
+    project: "Ajuste de acabamento",
     stage: "needsRevision",
     priority: "urgent",
     paymentStatus: "overdue",

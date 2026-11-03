@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { OrderStageBadge } from "@/components/admin/order-stage-badge";
 import { PriorityBadge } from "@/components/admin/priority-badge";
 import { ProductionBoard } from "@/components/admin/production-board";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { mockBudgetRequests, mockOrders, mockRecentActivity } from "@/lib/mock/admin";
 
@@ -113,11 +115,19 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="space-y-3">
-        <div>
-          <h2 className="text-lg font-semibold">Production</h2>
-          <p className="text-sm text-muted-foreground">
-            Orders currently in progress, grouped by stage.
-          </p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-semibold">Production</h2>
+            <p className="text-sm text-muted-foreground">
+              Orders currently in progress, grouped by stage.
+            </p>
+          </div>
+          <Button
+            size="sm"
+            variant="outline"
+            nativeButton={false}
+            render={<Link href="/admin/production/delivered">Delivered projects</Link>}
+          />
         </div>
         <ProductionBoard orders={mockOrders} />
       </div>

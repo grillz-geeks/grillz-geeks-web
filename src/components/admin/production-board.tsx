@@ -17,10 +17,12 @@ const DOT_CLASS_BY_STAGE: Record<OrderStage, string> = {
   delivered: "bg-primary",
 };
 
+const BOARD_STAGES = ORDER_STAGES.filter((stage) => stage.value !== "delivered");
+
 export function ProductionBoard({ orders }: { orders: MockOrder[] }) {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
-      {ORDER_STAGES.map((stage) => {
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {BOARD_STAGES.map((stage) => {
         const stageOrders = orders.filter((order) => order.stage === stage.value);
         return (
           <div key={stage.value} className="space-y-3">
@@ -41,14 +43,7 @@ export function ProductionBoard({ orders }: { orders: MockOrder[] }) {
                         <span className="text-sm font-medium">{order.orderNumber}</span>
                         <DotsThree className="size-4 text-muted-foreground" />
                       </div>
-                      <div>
-                        <p className="truncate text-sm">{order.client}</p>
-                        {order.clientNote && (
-                          <p className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">
-                            {order.clientNote}
-                          </p>
-                        )}
-                      </div>
+                      <p className="truncate text-sm">{order.client}</p>
                       <div className="flex items-center justify-between gap-2">
                         <span className="flex items-center gap-1 text-xs text-muted-foreground">
                           <CalendarBlank className="size-3.5" />
