@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { createClient } from "@/lib/supabase/server";
+import { isSupabaseConfigured } from "@/lib/supabase/env";
 
 export async function generateMetadata() {
   const t = await getTranslations("ClientArea.Account");
@@ -24,10 +25,9 @@ export async function generateMetadata() {
  */
 export default async function ClientAccountPage() {
   const t = await getTranslations("ClientArea.Account");
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const userEmail = isSupabaseConfigured()
+    ? (await (await createClient()).auth.getUser()).data.user?.email
+    : "previa@grillzgeeks.com";
 
   return (
     <div className="max-w-2xl space-y-6 p-8">
@@ -48,7 +48,7 @@ export default async function ClientAccountPage() {
               id="account-email"
               name="email"
               type="email"
-              defaultValue={user?.email ?? ""}
+              defaultValue={userEmail ?? ""}
               disabled
             />
           </div>
