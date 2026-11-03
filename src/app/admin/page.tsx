@@ -1,9 +1,7 @@
-import Link from "next/link";
 import { OrderStageBadge } from "@/components/admin/order-stage-badge";
 import { PriorityBadge } from "@/components/admin/priority-badge";
 import { ProductionBoard } from "@/components/admin/production-board";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { mockBudgetRequests, mockOrders, mockRecentActivity } from "@/lib/mock/admin";
 
@@ -27,7 +25,6 @@ export default function AdminDashboardPage() {
     <div className="space-y-6 p-8">
       <div>
         <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <p className="text-muted-foreground">General overview and pending requests.</p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -82,17 +79,20 @@ export default function AdminDashboardPage() {
             {mockBudgetRequests.map((request) => (
               <div
                 key={request.id}
-                className="flex flex-wrap items-center justify-between gap-2 rounded-md border p-3"
+                className="flex flex-wrap items-start justify-between gap-2 rounded-md border p-3"
               >
-                <div className="min-w-0">
-                  <p className="text-sm font-medium">{request.client}</p>
-                  <p className="text-xs text-muted-foreground">{request.summary}</p>
-                </div>
-                <div className="flex items-center gap-3">
+                <div className="min-w-0 space-y-1.5">
+                  <div>
+                    <p className="text-sm font-medium">{request.client}</p>
+                    <p className="text-xs text-muted-foreground">{request.summary}</p>
+                  </div>
                   <Badge variant="outline">
-                    {request.source === "site" ? "From site" : "Manual"}
+                    {request.source === "site" ? "From website" : "Manual"}
                   </Badge>
-                  <span className="text-sm font-medium">{formatCurrency(request.value)}</span>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-sm font-medium">{formatCurrency(request.value)}</p>
+                  <p className="text-xs text-muted-foreground">{request.receivedAt}</p>
                 </div>
               </div>
             ))}
@@ -115,20 +115,7 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h2 className="text-lg font-semibold">Production</h2>
-            <p className="text-sm text-muted-foreground">
-              Orders currently in progress, grouped by stage.
-            </p>
-          </div>
-          <Button
-            size="sm"
-            variant="outline"
-            nativeButton={false}
-            render={<Link href="/admin/production/delivered">Delivered projects</Link>}
-          />
-        </div>
+        <h2 className="text-lg font-semibold">Production</h2>
         <ProductionBoard orders={mockOrders} />
       </div>
 

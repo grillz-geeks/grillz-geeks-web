@@ -1,6 +1,12 @@
 "use client";
 
-import { Gauge, Receipt, UsersThree, ClockCounterClockwise } from "@phosphor-icons/react";
+import {
+  CheckCircle,
+  ClockCounterClockwise,
+  Gauge,
+  Receipt,
+  UsersThree,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,6 +31,7 @@ function displayNameFromEmail(email: string) {
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: Gauge },
+  { href: "/admin/production/delivered", label: "Delivered projects", icon: CheckCircle },
   { href: "/admin/clients", label: "Clients", icon: UsersThree },
   { href: "/admin/projects", label: "Project history", icon: ClockCounterClockwise },
   { href: "/admin/finance", label: "Invoices", icon: Receipt },
@@ -44,6 +51,7 @@ export function AdminShell({
       <aside className="flex w-56 shrink-0 flex-col overflow-y-auto border-r bg-sidebar p-4">
         <div className="flex flex-col items-center gap-2 px-2 py-3 text-center">
           <Image src="/brand/logo-mark.svg" alt="Grillz Geeks" width={96} height={78} />
+          <Separator className="w-full" />
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold leading-tight">
               {displayNameFromEmail(email)}
