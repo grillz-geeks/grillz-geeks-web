@@ -25,7 +25,7 @@ export default function ClientProjectsPage() {
         <NewProjectButton label="New project" />
       </div>
 
-      <Card>
+      <Card className="p-0">
         <CardContent className="p-0">
           <Table>
             <TableHeader>

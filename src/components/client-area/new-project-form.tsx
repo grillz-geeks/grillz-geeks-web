@@ -4,13 +4,6 @@ import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
@@ -43,19 +36,6 @@ export function NewProjectForm() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-xl space-y-6">
-      <div className="space-y-1.5">
-        <Label htmlFor="project-type">Project type</Label>
-        <Select name="projectType">
-          <SelectTrigger id="project-type" className="w-full">
-            <SelectValue placeholder="Select a type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="b2b">Brand / company (B2B)</SelectItem>
-            <SelectItem value="b2c">Personal grillz (B2C)</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
       <div className="space-y-1.5">
         <Label htmlFor="briefing">Briefing</Label>
         <Textarea

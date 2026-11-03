@@ -40,8 +40,8 @@ export function ClientAreaShell({
   const pathname = usePathname();
 
   return (
-    <div className="flex min-h-screen">
-      <aside className="flex w-64 shrink-0 flex-col border-r bg-sidebar p-4">
+    <div className="flex h-screen">
+      <aside className="flex w-64 shrink-0 flex-col overflow-y-auto border-r bg-sidebar p-4">
         <div className="flex flex-col items-start gap-2 px-2 py-3">
           <Image src="/brand/logo-mark.svg" alt="Grillz Geeks" width={64} height={52} />
           <div className="min-w-0">

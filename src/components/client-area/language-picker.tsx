@@ -1,13 +1,21 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { CaretDown } from "@phosphor-icons/react";
+import { useState, useSyncExternalStore } from "react";
+import { Button } from "@/components/ui/button";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   GOOGLE_TRANSLATE_LANGUAGES,
   getCurrentGoogleTranslateLanguage,
@@ -34,24 +42,41 @@ export function LanguagePicker() {
     getCurrentGoogleTranslateLanguage,
     getServerSnapshot,
   );
+  const [open, setOpen] = useState(false);
 
   return (
-    <Select
-      value={value}
-      onValueChange={(code) => code && setGoogleTranslateLanguage(code)}
-    >
-      <SelectTrigger className="w-full sm:w-72">
-        <SelectValue>
-          {(code: string) => LANGUAGE_NAME_BY_CODE[code] ?? code}
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent className="max-h-72">
-        {GOOGLE_TRANSLATE_LANGUAGES.map((language) => (
-          <SelectItem key={language.code} value={language.code}>
-            {language.name}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger
+        render={
+          <Button variant="outline" className="w-full justify-between sm:w-72">
+            {LANGUAGE_NAME_BY_CODE[value] ?? value}
+            <CaretDown className="size-4 text-muted-foreground" />
+          </Button>
+        }
+      />
+      <PopoverContent className="w-full p-0 sm:w-72">
+        <Command>
+          <CommandInput placeholder="Search language…" />
+          <CommandList>
+            <CommandEmpty>No language found.</CommandEmpty>
+            <CommandGroup>
+              {GOOGLE_TRANSLATE_LANGUAGES.map((language) => (
+                <CommandItem
+                  key={language.code}
+                  value={language.name}
+                  data-checked={language.code === value}
+                  onSelect={() => {
+                    setGoogleTranslateLanguage(language.code);
+                    setOpen(false);
+                  }}
+                >
+                  {language.name}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   );
 }
