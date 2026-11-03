@@ -7,11 +7,13 @@ import { isSupabaseConfigured } from "./lib/supabase/env";
 const handleI18nRouting = createMiddleware(routing);
 
 export default async function proxy(request: NextRequest) {
-  // A plataforma (/app/...) não faz parte do site com idioma
-  // en/pt — ela é sempre em inglês, e troca de idioma é feita pelo
-  // Google Tradutor (ver src/lib/google-translate.ts), não por URL.
-  // Por isso pulamos a lógica de idioma do next-intl aqui.
-  const isPlatformRoute = request.nextUrl.pathname.startsWith("/app");
+  // A plataforma (/app/... e /admin/...) não faz parte do site com
+  // idioma en/pt — ela é sempre em inglês, e troca de idioma é feita
+  // pelo Google Tradutor (ver src/lib/google-translate.ts), não por
+  // URL. Por isso pulamos a lógica de idioma do next-intl aqui.
+  const isPlatformRoute =
+    request.nextUrl.pathname.startsWith("/app") ||
+    request.nextUrl.pathname.startsWith("/admin");
   const response = isPlatformRoute
     ? NextResponse.next()
     : handleI18nRouting(request);

@@ -40,23 +40,23 @@ Existem **dois sistemas de idioma diferentes** no projeto — um para o site pú
 - Português (`pt`) aparece com prefixo (ex: `grillzgeeks.com/pt/services/b2b`).
 - Textos traduzíveis ficam em `messages/en.json` e `messages/pt.json`.
 
-**Plataforma logada** (`src/app/app/...`, Área do cliente): sempre em **inglês, escrito direto no código** (sem next-intl, sem arquivo de tradução). Para outros idiomas, veja "Idioma da plataforma" na seção "Área do cliente" abaixo.
+**Plataforma logada** (`src/app/app/...` e `src/app/admin/...`): sempre em **inglês, escrito direto no código** (sem next-intl, sem arquivo de tradução). Para outros idiomas, veja "Idioma da plataforma" na seção "Área do cliente" abaixo — o mesmo widget do Google Tradutor funciona nas duas áreas.
 
-Por isso a pasta `src/app/app/` fica **fora** de `src/app/[locale]/`, como uma rota de primeiro nível — é o mesmo motivo de `src/app/auth/confirm` também ficar fora.
+Por isso as pastas `src/app/app/` e `src/app/admin/` ficam **fora** de `src/app/[locale]/`, como rotas de primeiro nível — é o mesmo motivo de `src/app/auth/confirm` também ficar fora.
 
 ## Estrutura de páginas (fase atual)
 
 As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Custom Grillz, Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
 
-A **Área administrativa** (`/admin/...`) ainda não foi criada — fica para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
-
 A **Área do cliente** (`/app/...`) já existe, com dados fictícios (ver "Área do cliente" abaixo).
+
+A **Área administrativa** (`/admin/...`) está sendo construída aos poucos — por enquanto só o **Dashboard** (visão gerencial + quadro de produção) está pronto; Clientes, Histórico de projetos e Faturas são páginas "em construção" (ver "Área administrativa" abaixo).
 
 ## Login
 
 Já existem as páginas de **login, criar conta e recuperar senha** (`/login`, `/register`, `/forgot-password`, `/reset-password`), usando **Supabase Auth**. Enquanto as variáveis `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` não estiverem configuradas no `.env.local` (ou na Vercel em produção), essas páginas mostram um aviso de "login ainda não disponível" em vez de dar erro — o resto do site continua funcionando normalmente.
 
-Depois de logar, a pessoa cai em `/app/projects` (Área do cliente). **Ainda não existe diferença entre perfil de cliente e perfil de time interno** — quem cria conta em `/register` não vira automaticamente nem cliente nem interno; essa parte fica para quando a Thais decidir como isso deve funcionar. Por enquanto, todo mundo logado cai na Área do cliente.
+Depois de logar, a pessoa cai em `/app/projects` (Área do cliente). **Ainda não existe diferença entre perfil de cliente e perfil de time interno** — quem cria conta em `/register` não vira automaticamente nem cliente nem interno; essa parte fica para quando a Thais decidir como isso deve funcionar. Por enquanto, todo mundo logado cai na Área do cliente, mas **qualquer pessoa logada também já consegue acessar `/admin` digitando o endereço** (o layout de `/admin` só confere se há login, igual o de `/app` — não confere perfil, porque perfil ainda não existe). Isso é proposital por enquanto e está documentado aqui para não ser esquecido; quando a diferenciação de perfil existir, `/admin` deve passar a exigir perfil interno.
 
 ## Área do cliente
 
@@ -83,6 +83,19 @@ A plataforma é **sempre escrita em inglês**. Para outros idiomas, a pessoa tro
 - `src/components/client-area/language-picker.tsx` — o seletor em Dados da conta.
 
 Importante: é tradução automática, **não revisada por humano** — a qualidade varia por idioma. E depende do Google continuar oferecendo esse widget gratuito do jeito que é hoje (é um serviço não-oficial/não documentado oficialmente pelo Google, mas amplamente usado).
+
+## Área administrativa
+
+Rotas protegidas em `/admin/...` (`src/app/admin/`, **fora** do `[locale]`, mesma lógica de idioma e mesma trava de login da Área do cliente — ver "Idioma" e "Login" acima). Sendo construída em partes, seguindo o fluxograma que a Thais enviou; cada seção do menu vira um PR separado.
+
+- `/admin` — **Dashboard** (pronto): visão gerencial com KPIs, fila de orçamentos recebidos, atividades recentes, e o **quadro de produção** (kanban) embutido direto na página — pedidos agrupados por etapa (Novas solicitações, Em design, Aguardando aprovação, Precisa de revisão). Clicar num card de pedido leva ao detalhe.
+- `/admin/production/[id]` — **Detalhe do pedido** (pronto): dados do pedido, itens e linha do tempo (com espaço para foto de referência por evento, ainda só visual). As ações (aprovar, pedir revisão, etc.) ficam num botão "Actions" com menu, ao lado do nome do cliente.
+- `/admin/production/delivered` — **Delivered projects** (pronto): pedidos com etapa "Entregue" não aparecem no quadro de produção — ficam nesta tela separada, em tabela (cliente, projeto, número do pedido, quantidade de itens, link para o detalhe).
+- `/admin/clients` — **Clientes** (em construção, só título).
+- `/admin/projects` — **Histórico de projetos** (em construção, só título).
+- `/admin/finance` — **Faturas** (em construção, só título).
+
+**Os dados exibidos são fictícios** (`src/lib/mock/admin.ts`) — mesma lógica da Área do cliente: nada ligado ao Supabase ainda, botões de ação (Aprovar, Pedir revisão, etc.) ainda não fazem nada de verdade.
 
 ## Identidade visual e design system
 
