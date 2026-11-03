@@ -43,13 +43,26 @@ O site é em **inglês por padrão**, com **opção de tradução para portuguê
 
 As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Custom Grillz, Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
 
-A **Área do cliente** (`/app/...`) e a **Área administrativa** (`/admin/...`) — esses são os nomes oficiais das duas partes da plataforma logada — ainda não foram criadas — ficam para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
+A **Área administrativa** (`/admin/...`) ainda não foi criada — fica para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
+
+A **Área do cliente** (`/app/...`) já existe, com dados fictícios (ver "Área do cliente" abaixo).
 
 ## Login
 
 Já existem as páginas de **login, criar conta e recuperar senha** (`/login`, `/register`, `/forgot-password`, `/reset-password`), usando **Supabase Auth**. Enquanto as variáveis `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` não estiverem configuradas no `.env.local` (ou na Vercel em produção), essas páginas mostram um aviso de "login ainda não disponível" em vez de dar erro — o resto do site continua funcionando normalmente.
 
-Depois de logar, a pessoa cai numa página genérica em `/account` (só mostra o email dela e um botão de sair) — isso é temporário, só para provar que o login funciona. **Ainda não existe diferença entre perfil de cliente e perfil de time interno** — quem cria conta em `/register` não vira automaticamente nem cliente nem interno; essa parte fica para quando a Thais decidir como isso deve funcionar.
+Depois de logar, a pessoa cai em `/app/projects` (Área do cliente). **Ainda não existe diferença entre perfil de cliente e perfil de time interno** — quem cria conta em `/register` não vira automaticamente nem cliente nem interno; essa parte fica para quando a Thais decidir como isso deve funcionar. Por enquanto, todo mundo logado cai na Área do cliente.
+
+## Área do cliente
+
+Rotas protegidas em `/app/...` (`src/app/[locale]/app/`). O layout (`src/app/[locale]/app/layout.tsx`) exige login — quem não está logado é redirecionado para `/login` automaticamente.
+
+- `/app/projects` — Meus projetos (lista de orçamentos/projetos)
+- `/app/projects/new` — Criar novo projeto (fluxo de orçamento)
+- `/app/projects/[id]` — Detalhes do projeto (abas: Visão geral, Tarefas, Documentos)
+- `/app/account` — Dados da conta (perfil, senha, time/aprovadores)
+
+**Os dados exibidos são fictícios** (`src/lib/mock/projects.ts`) — nada ainda está ligado a uma tabela de verdade no Supabase. Os formulários (criar projeto, alterar dados, alterar senha, adicionar time) ainda não salvam nada de verdade, são só a tela. Isso é esperado nesta fase — ligar ao banco de dados é um próximo passo, depois que o visual for aprovado.
 
 ## Identidade visual e design system
 
@@ -58,6 +71,8 @@ A identidade visual já existe: **azul e branco**, baseada na logo (azul princip
 Os componentes de interface vêm do **shadcn/ui** (`src/components/ui/`), configurados em `components.json`. As cores ficam como tokens CSS em `src/app/globals.css` (formato `oklch`), todos derivados do azul da marca — por isso tudo combina entre si automaticamente. Para ver tudo isso aplicado, visite `/style-guide` (página interna, não faz parte do site — só para conferência visual).
 
 As logos (SVG) ficam em `public/brand/`: `logo-mark.svg` (símbolo azul/branco, usado na plataforma) e `logo-full.svg` (versão colorida com amarelo, não usar na plataforma).
+
+**Regra importante**: sempre que precisar de um componente de interface novo (botão, modal, dropdown, checkbox, etc.), **buscar no shadcn/ui** (`npx shadcn@latest add <componente>`) em vez de escrever do zero. Só criar um componente customizado quando o shadcn realmente não tiver nada parecido. Atenção: este projeto usa o shadcn com **Base UI** (não Radix) — para um `Button` virar outro elemento (ex: um link), usa-se `render={<Link ... />}` + `nativeButton={false}`, não o `asChild` do Radix.
 
 ## Ainda não decidido
 
