@@ -1,6 +1,12 @@
 "use client";
 
-import { DotsThreeVertical } from "@phosphor-icons/react";
+import {
+  ArrowsClockwise,
+  CaretDown,
+  CheckCircle,
+  ChatCircle,
+  ClockCounterClockwise,
+} from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,16 +20,29 @@ export function OrderActionsMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger
         render={
-          <Button variant="outline" size="icon" aria-label="Order actions">
-            <DotsThreeVertical className="size-4" />
+          <Button variant="outline" className="gap-2">
+            Actions
+            <CaretDown className="size-4" />
           </Button>
         }
       />
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem>Approve (mark as delivered)</DropdownMenuItem>
-        <DropdownMenuItem>Request revision</DropdownMenuItem>
-        <DropdownMenuItem>Update stage</DropdownMenuItem>
-        <DropdownMenuItem>Send message to client</DropdownMenuItem>
+      <DropdownMenuContent align="end" className="w-64">
+        <DropdownMenuItem>
+          <CheckCircle />
+          Approve (mark as delivered)
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <ClockCounterClockwise />
+          Request revision
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <ArrowsClockwise />
+          Update stage
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <ChatCircle />
+          Send message to client
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
