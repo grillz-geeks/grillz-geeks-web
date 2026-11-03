@@ -41,9 +41,9 @@ export function AdminShell({
 
   return (
     <div className="flex h-screen">
-      <aside className="flex w-64 shrink-0 flex-col overflow-y-auto border-r bg-sidebar p-4">
-        <div className="flex flex-col items-start gap-2 px-2 py-3">
-          <Image src="/brand/logo-mark.svg" alt="Grillz Geeks" width={64} height={52} />
+      <aside className="flex w-56 shrink-0 flex-col overflow-y-auto border-r bg-sidebar p-4">
+        <div className="flex flex-col items-center gap-2 px-2 py-3 text-center">
+          <Image src="/brand/logo-mark.svg" alt="Grillz Geeks" width={96} height={78} />
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold leading-tight">
               {displayNameFromEmail(email)}
