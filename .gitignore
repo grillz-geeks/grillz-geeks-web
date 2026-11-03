@@ -38,6 +38,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# material de trabalho dos protótipos navegáveis (artefatos), não faz
+# parte do site — fica só local, nunca vai pro GitHub.
+/.artifact-preview
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
