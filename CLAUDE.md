@@ -43,7 +43,7 @@ O site é em **inglês por padrão**, com **opção de tradução para portuguê
 
 As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Custom Grillz, Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
 
-A **área do cliente** (`/app/...`) e a **área administrativa** (`/admin/...`) ainda não foram criadas — ficam para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
+A **Área do cliente** (`/app/...`) e a **Área administrativa** (`/admin/...`) — esses são os nomes oficiais das duas partes da plataforma logada — ainda não foram criadas — ficam para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
 
 ## Login
 
@@ -51,11 +51,19 @@ Já existem as páginas de **login, criar conta e recuperar senha** (`/login`, `
 
 Depois de logar, a pessoa cai numa página genérica em `/account` (só mostra o email dela e um botão de sair) — isso é temporário, só para provar que o login funciona. **Ainda não existe diferença entre perfil de cliente e perfil de time interno** — quem cria conta em `/register` não vira automaticamente nem cliente nem interno; essa parte fica para quando a Thais decidir como isso deve funcionar.
 
+## Identidade visual e design system
+
+A identidade visual já existe: **azul e branco**, baseada na logo (azul principal `#0c2266`), **sem amarelo na plataforma**. A fonte é **Manrope** (Google Fonts).
+
+Os componentes de interface vêm do **shadcn/ui** (`src/components/ui/`), configurados em `components.json`. As cores ficam como tokens CSS em `src/app/globals.css` (formato `oklch`), todos derivados do azul da marca — por isso tudo combina entre si automaticamente. Para ver tudo isso aplicado, visite `/style-guide` (página interna, não faz parte do site — só para conferência visual).
+
+As logos (SVG) ficam em `public/brand/`: `logo-mark.svg` (símbolo azul/branco, usado na plataforma) e `logo-full.svg` (versão colorida com amarelo, não usar na plataforma).
+
 ## Ainda não decidido
 
-- **Identidade visual** (logo, cores, fontes, imagens) ainda não foi adicionada ao projeto.
+- **Conteúdo final** das páginas (textos, imagens de verdade) — por enquanto é tudo placeholder/estrutura, baseado só no sitemap.
 
-Por isso: **não invente** paleta de cores, fontes nem textos finais de página. Quando for necessário decidir algo assim, pergunte antes.
+Por isso: **não invente** textos finais de página nem imagens reais. Quando for necessário decidir algo assim, pergunte antes.
 
 ## Regras de trabalho
 
