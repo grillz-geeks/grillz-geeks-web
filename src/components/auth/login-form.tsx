@@ -32,7 +32,7 @@ export function LoginForm() {
       return;
     }
 
-    router.push("/account");
+    router.push("/app/projects");
     router.refresh();
   }
 

@@ -1,13 +1,20 @@
 import { createServerClient } from "@supabase/ssr";
 import createMiddleware from "next-intl/middleware";
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "./i18n/routing";
 import { isSupabaseConfigured } from "./lib/supabase/env";
 
 const handleI18nRouting = createMiddleware(routing);
 
 export default async function proxy(request: NextRequest) {
-  const response = handleI18nRouting(request);
+  // A plataforma (/app/...) não faz parte do site com idioma
+  // en/pt — ela é sempre em inglês, e troca de idioma é feita pelo
+  // Google Tradutor (ver src/lib/google-translate.ts), não por URL.
+  // Por isso pulamos a lógica de idioma do next-intl aqui.
+  const isPlatformRoute = request.nextUrl.pathname.startsWith("/app");
+  const response = isPlatformRoute
+    ? NextResponse.next()
+    : handleI18nRouting(request);
 
   // Enquanto o Supabase não estiver configurado, o site continua
   // funcionando normalmente — só não renova sessão de login nenhuma.
@@ -46,5 +53,7 @@ export const config = {
   // Roda em todas as rotas, exceto arquivos internos do Next.js,
   // arquivos estáticos (public/), a pasta de API (quando existir) e
   // /auth/confirm (link de email do Supabase, fica fora do [locale] de propósito).
+  // /app continua passando por aqui (precisa da renovação de sessão),
+  // só não passa pela parte de idioma — ver isPlatformRoute acima.
   matcher: ["/((?!api|auth|_next|.*\\..*).*)"],
 };

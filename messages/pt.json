@@ -2,26 +2,66 @@
   "Common": {
     "placeholderNote": "Esta página é um espaço reservado da estrutura — o conteúdo final e a identidade visual ainda vão ser adicionados."
   },
-  "HomePage": { "title": "Início" },
-  "ServicesB2BPage": { "title": "Serviços — Empresas e Marcas (B2B)" },
-  "ServicesB2BCadPage": { "title": "Serviços — B2B — Design CAD" },
-  "ServicesB2BCasesPage": { "title": "Serviços — B2B — Portfólio de Cases" },
-  "ServicesB2BHowItWorksPage": { "title": "Serviços — B2B — Como Funciona" },
-  "ServicesB2BContactPage": { "title": "Serviços — B2B — Fale com a Gente" },
-  "ServicesB2CPage": { "title": "Serviços — Pessoas Físicas (B2C)" },
-  "ServicesFaqPage": { "title": "Perguntas Frequentes" },
-  "WorksPage": { "title": "Portfólio" },
-  "WorkDetailPage": { "title": "Case" },
-  "CustomGrillzPage": { "title": "Custom Grillz" },
-  "AcademyPage": { "title": "Academy" },
-  "AcademyCoursesPage": { "title": "Academy — Cursos" },
-  "AcademyCourseUltimateCadPage": { "title": "Curso Ultimate CAD Grillz" },
-  "AcademyTestimonialsPage": { "title": "Academy — Depoimentos" },
-  "AcademyEnrollPage": { "title": "Academy — Matrícula" },
-  "DesignYourGrillzPage": { "title": "Monte Seu Grillz" },
-  "DesignYourClientsGrillzPage": { "title": "Monte o Grillz do Seu Cliente" },
-  "AboutPage": { "title": "Sobre" },
-  "ContactPage": { "title": "Contato" },
+  "HomePage": {
+    "title": "Início"
+  },
+  "ServicesB2BPage": {
+    "title": "Serviços — Empresas e Marcas (B2B)"
+  },
+  "ServicesB2BCadPage": {
+    "title": "Serviços — B2B — Design CAD"
+  },
+  "ServicesB2BCasesPage": {
+    "title": "Serviços — B2B — Portfólio de Cases"
+  },
+  "ServicesB2BHowItWorksPage": {
+    "title": "Serviços — B2B — Como Funciona"
+  },
+  "ServicesB2BContactPage": {
+    "title": "Serviços — B2B — Fale com a Gente"
+  },
+  "ServicesB2CPage": {
+    "title": "Serviços — Pessoas Físicas (B2C)"
+  },
+  "ServicesFaqPage": {
+    "title": "Perguntas Frequentes"
+  },
+  "WorksPage": {
+    "title": "Portfólio"
+  },
+  "WorkDetailPage": {
+    "title": "Case"
+  },
+  "CustomGrillzPage": {
+    "title": "Custom Grillz"
+  },
+  "AcademyPage": {
+    "title": "Academy"
+  },
+  "AcademyCoursesPage": {
+    "title": "Academy — Cursos"
+  },
+  "AcademyCourseUltimateCadPage": {
+    "title": "Curso Ultimate CAD Grillz"
+  },
+  "AcademyTestimonialsPage": {
+    "title": "Academy — Depoimentos"
+  },
+  "AcademyEnrollPage": {
+    "title": "Academy — Matrícula"
+  },
+  "DesignYourGrillzPage": {
+    "title": "Monte Seu Grillz"
+  },
+  "DesignYourClientsGrillzPage": {
+    "title": "Monte o Grillz do Seu Cliente"
+  },
+  "AboutPage": {
+    "title": "Sobre"
+  },
+  "ContactPage": {
+    "title": "Contato"
+  },
   "Auth": {
     "notConfiguredTitle": "Login ainda não disponível",
     "notConfiguredBody": "Esta página precisa que o Supabase esteja configurado (URL e chave do projeto) para funcionar.",
@@ -63,11 +103,6 @@
       "successTitle": "Senha atualizada",
       "successBody": "Sua senha foi atualizada.",
       "goToLogin": "Ir para o login"
-    },
-    "Account": {
-      "title": "Você está logada",
-      "loggedInAs": "Logada como",
-      "signOut": "Sair"
     }
   }
 }

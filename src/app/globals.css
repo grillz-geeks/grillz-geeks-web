@@ -136,3 +136,23 @@
     @apply font-sans;
   }
 }
+
+/*
+ * Esconde a barrinha e os elementos que o widget do Google Tradutor
+ * injeta sozinho na página (usado na plataforma, ver
+ * src/components/client-area/google-translate-loader.tsx). Sem isso,
+ * ele empurra o site inteiro alguns pixels pra baixo e mostra um
+ * banner que a gente não quer.
+ */
+.goog-te-banner-frame,
+.skiptranslate iframe {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}

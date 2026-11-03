@@ -32,7 +32,7 @@ export function RegisterForm() {
       email: String(formData.get("email")),
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/confirm?next=/account`,
+        emailRedirectTo: `${window.location.origin}/auth/confirm?next=/app/projects`,
       },
     });
     setLoading(false);

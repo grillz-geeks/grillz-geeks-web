@@ -53,7 +53,7 @@ export default function StyleGuidePage() {
         <Image
           src="/brand/logo-mark.svg"
           alt="Grillz Geeks"
-          width={56}
+          width={69}
           height={56}
           priority
         />
