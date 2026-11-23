@@ -3,7 +3,10 @@
     "placeholderNote": "Esta página é um espaço reservado da estrutura — o conteúdo final e a identidade visual ainda vão ser adicionados."
   },
   "HomePage": {
-    "title": "Início"
+    "title": "Início",
+    "comingSoon": "Em breve",
+    "body": "Nosso novo site está chegando.",
+    "orderCta": "Order your Grillz"
   },
   "ServicesB2BPage": {
     "title": "Serviços — Empresas e Marcas (B2B)"
@@ -31,9 +34,6 @@
   },
   "WorkDetailPage": {
     "title": "Case"
-  },
-  "CustomGrillzPage": {
-    "title": "Custom Grillz"
   },
   "AcademyPage": {
     "title": "Academy"
@@ -104,5 +104,11 @@
       "successBody": "Sua senha foi atualizada.",
       "goToLogin": "Ir para o login"
     }
+  },
+  "OrderYourGrillzPage": {
+    "title": "Order your Grillz",
+    "comingSoon": "Em breve",
+    "body": "Os pedidos abrem em breve.",
+    "backHome": "Voltar para o início"
   }
 }

@@ -6,7 +6,35 @@ import { isSupabaseConfigured } from "./lib/supabase/env";
 
 const handleI18nRouting = createMiddleware(routing);
 
+/**
+ * Páginas que estão públicas no ar por enquanto. Todas as outras
+ * (services, academy, login, área do cliente, etc.) existem no código,
+ * mas mostram "página não encontrada" no site publicado — até serem liberadas
+ * aqui. Para ver todas as páginas (ex: em um teste na Vercel), crie a
+ * variável SHOW_UNFINISHED_PAGES=true. Rodando no computador (npm run dev),
+ * todas as páginas aparecem normalmente.
+ */
+const PUBLIC_PATHS = ["/", "/order-your-grillz"];
+
+function isHiddenPage(pathname: string) {
+  if (
+    process.env.NODE_ENV !== "production" ||
+    process.env.SHOW_UNFINISHED_PAGES === "true"
+  ) {
+    return false;
+  }
+  // Tira o prefixo do português (/pt) e a barra final antes de comparar.
+  const path = pathname.replace(/^\/pt(?=\/|$)/, "").replace(/\/+$/, "") || "/";
+  return !PUBLIC_PATHS.includes(path);
+}
+
 export default async function proxy(request: NextRequest) {
+  if (isHiddenPage(request.nextUrl.pathname)) {
+    return NextResponse.rewrite(new URL("/pagina-nao-encontrada", request.url), {
+      status: 404,
+    });
+  }
+
   // A plataforma (/app/...) não faz parte do site com idioma
   // en/pt — ela é sempre em inglês, e troca de idioma é feita pelo
   // Google Tradutor (ver src/lib/google-translate.ts), não por URL.

@@ -44,9 +44,13 @@ Existem **dois sistemas de idioma diferentes** no projeto — um para o site pú
 
 Por isso a pasta `src/app/app/` fica **fora** de `src/app/[locale]/`, como uma rota de primeiro nível — é o mesmo motivo de `src/app/auth/confirm` também ficar fora.
 
+## Páginas públicas no ar (lançamento inicial)
+
+No site publicado, **só duas páginas aparecem**: Home (`/`) e Order your Grillz (`/order-your-grillz`), ambas só com aviso de "em breve". Todas as outras existem no código, mas mostram "não encontrada" no site publicado — a lista de liberadas fica em `PUBLIC_PATHS` no `src/proxy.ts`. Para liberar uma página nova, adicione o caminho nessa lista. Para ver todas num teste na Vercel, crie a variável `SHOW_UNFINISHED_PAGES=true`. No computador (`npm run dev`) todas aparecem normalmente.
+
 ## Estrutura de páginas (fase atual)
 
-As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Custom Grillz, Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
+As páginas do **site público** já existem como estrutura vazia (só título e um aviso de "em construção", sem texto final nem visual): Home, Services (B2B com subpáginas de CAD/Cases/Como funciona/Contato, e B2C), FAQ, Works (portfólio + página de case), Order your Grillz (antes chamada Custom Grillz), Academy (com cursos, depoimentos e matrícula), Design your Grillz / Design your client's Grillz, About e Contact.
 
 A **Área administrativa** (`/admin/...`) ainda não foi criada — fica para quando decidirmos como diferenciar perfil de cliente e de time interno (ver "Login" abaixo).
 

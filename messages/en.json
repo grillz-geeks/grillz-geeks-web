@@ -3,7 +3,10 @@
     "placeholderNote": "This page is a structural placeholder — final content and visual design are coming soon."
   },
   "HomePage": {
-    "title": "Home"
+    "title": "Home",
+    "comingSoon": "Coming soon",
+    "body": "Our new website is on its way.",
+    "orderCta": "Order your Grillz"
   },
   "ServicesB2BPage": {
     "title": "Services — B2B"
@@ -31,9 +34,6 @@
   },
   "WorkDetailPage": {
     "title": "Case"
-  },
-  "CustomGrillzPage": {
-    "title": "Custom Grillz"
   },
   "AcademyPage": {
     "title": "Academy"
@@ -104,5 +104,11 @@
       "successBody": "Your password has been updated.",
       "goToLogin": "Go to login"
     }
+  },
+  "OrderYourGrillzPage": {
+    "title": "Order your Grillz",
+    "comingSoon": "Coming soon",
+    "body": "Orders are opening soon.",
+    "backHome": "Back to home"
   }
 }

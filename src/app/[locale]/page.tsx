@@ -1,12 +1,24 @@
 import { getTranslations } from "next-intl/server";
-import { PlaceholderPage } from "@/components/placeholder-page";
+import { ComingSoon } from "@/components/coming-soon";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata() {
   const t = await getTranslations("HomePage");
-  return { title: t("title") };
+  return { title: "Grillz Geeks", description: t("body") };
 }
 
 export default async function Page() {
   const t = await getTranslations("HomePage");
-  return <PlaceholderPage path="/" title={t("title")} />;
+  return (
+    <ComingSoon tag={t("comingSoon")} title="Grillz Geeks" body={t("body")}>
+      <Button
+        size="lg"
+        nativeButton={false}
+        render={<Link href="/order-your-grillz" />}
+      >
+        {t("orderCta")}
+      </Button>
+    </ComingSoon>
+  );
 }
